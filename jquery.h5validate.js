@@ -304,10 +304,9 @@
 			                validity.valid = true;
 			            }
 			        } else {
-			            if (pattern && !re.test(value) && value) {
-			                validity.valid = false;
-			                validity.patternMismatch = true;
-			            } else if (!pattern && classPattern && !reClass.test(value) && value) {
+			            var checkPattern = pattern ? pattern : classPattern;
+		                    var checkRegex = pattern ? re : reClass;
+		                    if (checkPattern && !checkRegex.test(value) && value) {
 			                validity.valid = false;
 			                validity.patternMismatch = true;
 			            } else {
